@@ -32,7 +32,7 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #1a1a2e;
+            background: #0a0a0a;
             min-height: 100vh;
             color: white;
             overflow-x: hidden;
@@ -54,41 +54,58 @@
         }
         
         .hero-section {
-            max-width: 900px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 20px;
             text-align: center;
+        }
+        
+        .banner-container {
+            position: relative;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto 40px;
         }
         
         .main-image {
             width: 100%;
-            max-width: 800px;
             height: auto;
-            margin: 0 auto 40px;
             display: block;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
+            border-radius: 0;
+        }
+        
+        /* Десктопна картинка */
+        .banner-desktop {
+            display: block;
+        }
+        
+        .banner-mobile {
+            display: none;
         }
         
         .cta-button {
-            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-            color: #1a1a2e;
+            position: absolute;
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+            color: white;
             border: none;
-            padding: 25px 60px;
-            font-size: 1.8em;
+            padding: 18px 50px;
+            font-size: 1.5em;
             font-weight: bold;
-            border-radius: 50px;
+            border-radius: 8px;
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.5);
             transition: all 0.3s ease;
-            margin: 0 0 50px 0;
             text-transform: uppercase;
-            display: inline-block;
+            z-index: 10;
         }
         
         .cta-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
+            transform: translateX(-50%) translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 0, 0, 0.7);
+            background: linear-gradient(135deg, #ff2020 0%, #dd0000 100%);
         }
         
         .info-box {
@@ -103,6 +120,17 @@
         .info-box p {
             margin: 12px 0;
             font-size: 1.1em;
+        }
+        
+        /* Мобільна версія - все поверх картинки */
+        .mobile-overlay {
+            display: none;
+        }
+        
+        @media (min-width: 769px) {
+            .mobile-overlay {
+                display: none !important;
+            }
         }
         
         .modal {
@@ -226,17 +254,62 @@
         }
         
         @media (max-width: 768px) {
+            .banner-desktop {
+                display: none;
+            }
+            
+            .banner-mobile {
+                display: block;
+            }
+            
+            .banner-container {
+                position: relative;
+                min-height: 100vh;
+            }
+            
             .cta-button {
-                padding: 20px 40px;
-                font-size: 1.4em;
+                padding: 15px 40px;
+                font-size: 1.3em;
+                bottom: auto;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 80%;
+                max-width: 300px;
             }
             
-            .main-image {
-                border-radius: 15px;
+            .cta-button:hover {
+                transform: translate(-50%, -50%) translateY(-3px);
             }
             
-            .info-box {
+            /* Info-box для мобільних - поверх картинки */
+            .mobile-overlay {
+                display: block;
+                position: absolute;
+                bottom: 5%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90%;
+                max-width: 400px;
+                z-index: 10;
+            }
+            
+            .mobile-overlay .info-box {
+                background: rgba(26, 26, 46, 0.92);
                 padding: 20px;
+                margin: 0;
+                backdrop-filter: blur(10px);
+                border: 2px solid rgba(138, 43, 226, 0.4);
+            }
+            
+            .mobile-overlay .info-box p {
+                font-size: 0.95em;
+                margin: 8px 0;
+            }
+            
+            /* Приховати десктопну версію info-box на мобільних */
+            .hero-section > .info-box {
+                display: none;
             }
         }
     </style>
