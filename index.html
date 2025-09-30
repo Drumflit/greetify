@@ -83,20 +83,21 @@
             display: none;
         }
         
+        /* Кнопка для десктопу - жовта */
         .cta-button {
             position: absolute;
-            bottom: 15%;
+            bottom: calc(15% - 5cm);
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
-            color: white;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #1a1a2e;
             border: none;
             padding: 18px 50px;
             font-size: 1.5em;
             font-weight: bold;
             border-radius: 8px;
             cursor: pointer;
-            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.5);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
             transition: all 0.3s ease;
             text-transform: uppercase;
             z-index: 10;
@@ -104,8 +105,8 @@
         
         .cta-button:hover {
             transform: translateX(-50%) translateY(-3px);
-            box-shadow: 0 12px 35px rgba(255, 0, 0, 0.7);
-            background: linear-gradient(135deg, #ff2020 0%, #dd0000 100%);
+            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.8);
+            background: linear-gradient(135deg, #ffed4e 0%, #fffb88 100%);
         }
         
         .info-box {
@@ -259,36 +260,47 @@
             }
             
             .banner-mobile {
-                display: block;
+                display: none;
             }
             
             .banner-container {
                 position: relative;
                 min-height: 100vh;
+                background-image: url('banner2.png');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
             }
             
             .cta-button {
                 padding: 15px 40px;
                 font-size: 1.3em;
+                position: relative;
                 bottom: auto;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
+                top: auto;
+                left: auto;
+                transform: none;
                 width: 80%;
                 max-width: 300px;
+                margin-bottom: 20px;
+                background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+                color: white;
             }
             
             .cta-button:hover {
-                transform: translate(-50%, -50%) translateY(-3px);
+                transform: translateY(-3px);
+                background: linear-gradient(135deg, #ff2020 0%, #dd0000 100%);
+                box-shadow: 0 12px 35px rgba(255, 0, 0, 0.7);
             }
             
             /* Info-box для мобільних - поверх картинки */
             .mobile-overlay {
                 display: block;
-                position: absolute;
-                bottom: 5%;
-                left: 50%;
-                transform: translateX(-50%);
+                position: relative;
                 width: 90%;
                 max-width: 400px;
                 z-index: 10;
@@ -316,13 +328,27 @@
 </head>
 <body>
     <div class="hero-section">
-        <!-- Головне зображення -->
-        <img src="banner.png" alt="Greetify - Коли слова не можуть передати почуття їх співають. Створимо пісню для вас під будь яке свято чи подію" class="main-image">
+        <!-- Банер з кнопкою -->
+        <div class="banner-container">
+            <img src="banner.png" alt="Greetify - Коли слова не можуть передати почуття їх співають" class="main-image banner-desktop">
+            <img src="banner2.png" alt="Greetify - Коли слова не можуть передати почуття їх співають" class="main-image banner-mobile">
+            
+            <!-- Кнопка замовлення поверх банера -->
+            <button class="cta-button" onclick="openModal()">Замовити пісню</button>
+            
+            <!-- Інфо для мобільної версії (поверх картинки) -->
+            <div class="mobile-overlay">
+                <div class="info-box">
+                    <p><strong>⏱️ Виконання:</strong> до 48 годин</p>
+                    <p><strong>💰 Ціна:</strong> від 500 грн</p>
+                    <p><strong>⏳ Тривалість:</strong> до 3 хвилин</p>
+                    <p><strong>🎨 Стилі:</strong> будь-який на ваш вибір</p>
+                    <p><strong>🎯 Для кого:</strong> будь-який вік та подія</p>
+                </div>
+            </div>
+        </div>
         
-        <!-- Кнопка замовлення -->
-        <button class="cta-button" onclick="openModal()">Замовити пісню</button>
-        
-        <!-- Інформаційний блок -->
+        <!-- Інформаційний блок для десктопу (під банером) -->
         <div class="info-box">
             <p><strong>⏱️ Виконання:</strong> до 48 годин</p>
             <p><strong>💰 Ціна:</strong> від 500 грн</p>
