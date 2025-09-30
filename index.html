@@ -38,21 +38,7 @@
             overflow-x: hidden;
         }
         
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background: #ffd700;
-            position: absolute;
-            animation: fall 4s linear infinite;
-        }
-        
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
-            }
-        }
-        
+
         .hero-section {
             max-width: 1400px;
             margin: 0 auto;
@@ -86,7 +72,7 @@
         /* Кнопка для десктопу - жовта */
         .cta-button {
             position: absolute;
-            bottom: calc(15% - 4cm);
+            bottom: calc(15% - 5cm);
             left: 50%;
             transform: translateX(-50%);
             background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
@@ -485,22 +471,6 @@
                 }, 2000);
             }, 500);
         });
-        
-        // Створення конфеті
-        function createConfetti() {
-            const colors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#45b7d1', '#f7b731'];
-            for (let i = 0; i < 30; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.animationDelay = Math.random() * 4 + 's';
-                confetti.style.animationDuration = (Math.random() * 3 + 3) + 's';
-                document.body.appendChild(confetti);
-            }
-        }
-        
-        createConfetti();
     </script>
 </body>
 </html>
