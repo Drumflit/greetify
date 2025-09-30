@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greetify | Пісня-Привітання на Замовлення | Унікальний Подарунок</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Подаруйте емоції, які запам'ятаються назавжди. Greetify - унікальні пісні-привітання на замовлення для будь-якого свята. Коли слова не можуть передати почуття — їх співають. Від 500 грн, виконання до 48 годин.">
+    <meta name="keywords" content="пісня на замовлення, пісня-привітання, подарунок на день народження, унікальний подарунок, музичний подарунок, пісня на свято, Greetify, замовити пісню, персональна пісня, музичне привітання, подарунок коханій, подарунок коханому, оригінальний подарунок, ваша історія ваша мелодія">
+    <meta name="author" content="Greetify">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags (для соцмереж) -->
+    <meta property="og:title" content="Greetify | Пісня-Привітання на Замовлення">
+    <meta property="og:description" content="Подаруйте емоції, які запам'ятаються назавжди. Ваша історія, ваша мелодія, ваш ідеальний подарунок. Від дня народження до річниці — музика говорить краще за слова.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="greetify-preview.jpg">
+    <meta property="og:locale" content="uk_UA">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Greetify | Пісня-Привітання на Замовлення">
+    <meta name="twitter:description" content="Коли слова не можуть передати почуття — їх співають. Замовте унікальну пісню-привітання.">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1a1a2e;
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ffd700;
+            position: absolute;
+            animation: fall 4s linear infinite;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+        
+        .hero-section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .main-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            margin: 0 auto 40px;
+            display: block;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #1a1a2e;
+            border: none;
+            padding: 25px 60px;
+            font-size: 1.8em;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+            transition: all 0.3s ease;
+            margin: 0 0 50px 0;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.6);
+        }
+        
+        .info-box {
+            background: rgba(45, 45, 68, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 0 auto;
+            max-width: 600px;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+        }
+        
+        .info-box p {
+            margin: 12px 0;
+            font-size: 1.1em;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background: #2d2d44;
+            max-width: 650px;
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: 20px;
+            position: relative;
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.3);
+        }
+        
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 35px;
+            cursor: pointer;
+            color: #ffd700;
+            transition: all 0.3s ease;
+        }
+        
+        .close:hover {
+            color: #ffed4e;
+            transform: rotate(90deg);
+        }
+        
+        h2 {
+            color: #ffd700;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #fff;
+            font-weight: 500;
+            font-size: 1em;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            font-size: 1em;
+            font-family: inherit;
+            background: rgba(26, 26, 46, 0.6);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #ffd700;
+            background: rgba(26, 26, 46, 0.8);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 90px;
+        }
+        
+        select {
+            cursor: pointer;
+        }
+        
+        option {
+            background: #1a1a2e;
+            color: white;
+        }
+        
+        .submit-button {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #1a1a2e;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.3em;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+        
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+        }
+        
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+            color: white;
+            padding: 18px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 1.1em;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .cta-button {
+                padding: 20px 40px;
+                font-size: 1.4em;
+            }
+            
+            .main-image {
+                border-radius: 15px;
+            }
+            
+            .info-box {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <!-- Головне зображення -->
+        <img src="11111.png" alt="Greetify - Подаруйте емоції, які запам'ятаються назавжди. Коли слова не можуть передати почуття — їх співають" class="main-image">
+        
+        <!-- Кнопка замовлення -->
+        <button class="cta-button" onclick="openModal()">Замовити пісню</button>
+        
+        <!-- Інформаційний блок -->
+        <div class="info-box">
+            <p><strong>⏱️ Виконання:</strong> до 48 годин</p>
+            <p><strong>💰 Ціна:</strong> від 500 грн</p>
+            <p><strong>⏳ Тривалість:</strong> до 3 хвилин</p>
+            <p><strong>🎨 Стилі:</strong> будь-який на ваш вибір</p>
+            <p><strong>🎯 Для кого:</strong> будь-який вік та подія</p>
+        </div>
+    </div>
+    
+    <!-- Модальне вікно з формою -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Замовлення пісні-привітання</h2>
+            
+            <form id="orderForm" action="https://formspree.io/f/xyznwdqn" method="POST">
+                <div class="form-group">
+                    <label for="customerName">Ваше ім'я *</label>
+                    <input type="text" id="customerName" name="customerName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customerPhone">Ваш телефон *</label>
+                    <input type="tel" id="customerPhone" name="customerPhone" placeholder="+380..." required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="recipientName">Для кого пісня (ім'я) *</label>
+                    <input type="text" id="recipientName" name="recipientName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="musicStyle">В якому стилі *</label>
+                    <select id="musicStyle" name="musicStyle" required>
+                        <option value="">Оберіть стиль</option>
+                        <option value="pop">Поп</option>
+                        <option value="rock">Рок</option>
+                        <option value="rap">Реп</option>
+                        <option value="jazz">Джаз</option>
+                        <option value="folk">Народна</option>
+                        <option value="blues">Блюз</option>
+                        <option value="country">Кантрі</option>
+                        <option value="romance">Романтична балада</option>
+                        <option value="funny">Веселий/гумористичний</option>
+                        <option value="other">Інший (опишіть нижче)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="personDescription">Короткий опис людини *</label>
+                    <textarea id="personDescription" name="personDescription" placeholder="Розкажіть про характер, особливості, вік..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="preferences">Вподобання (музика, фільми, спорт і т.д.)</label>
+                    <textarea id="preferences" name="preferences" placeholder="Що любить? Які інтереси?"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="workplace">Де працює / навчається</label>
+                    <input type="text" id="workplace" name="workplace" placeholder="Професія, місце роботи...">
+                </div>
+                
+                <div class="form-group">
+                    <label for="funnyFacts">Смішні факти / особливості</label>
+                    <textarea id="funnyFacts" name="funnyFacts" placeholder="Що можна обіграти в пісні у веселій формі?"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="favoriteSong">Улюблена пісня або виконавець</label>
+                    <input type="text" id="favoriteSong" name="favoriteSong">
+                </div>
+                
+                <div class="form-group">
+                    <label for="hobbies">Хобі та захоплення</label>
+                    <input type="text" id="hobbies" name="hobbies">
+                </div>
+                
+                <div class="form-group">
+                    <label for="occasion">З якої нагоди пісня</label>
+                    <select id="occasion" name="occasion">
+                        <option value="">Оберіть нагоду</option>
+                        <option value="birthday">День народження</option>
+                        <option value="wedding">Весілля</option>
+                        <option value="anniversary">Річниця</option>
+                        <option value="valentines">День закоханих</option>
+                        <option value="newYear">Новий рік</option>
+                        <option value="graduation">Випускний</option>
+                        <option value="other">Інша подія</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="specialWishes">Спеціальні побажання до пісні</label>
+                    <textarea id="specialWishes" name="specialWishes" placeholder="Що обов'язково має бути в пісні? Є якісь фрази чи моменти, які треба згадати?"></textarea>
+                </div>
+                
+                <button type="submit" class="submit-button">Відправити замовлення</button>
+                
+                <div class="success-message" id="successMessage">
+                    ✅ Дякуємо! Ваше замовлення отримано. Ми зв'яжемося з вами найближчим часом!
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function openModal() {
+            document.getElementById('orderModal').style.display = 'block';
+        }
+        
+        function closeModal() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+        
+        window.onclick = function(event) {
+            const modal = document.getElementById('orderModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+        
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            // Форма відправляється на Formspree автоматично
+            // Показуємо повідомлення користувачу
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'block';
+                setTimeout(() => {
+                    closeModal();
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 2000);
+            }, 500);
+        });
+        
+        // Створення конфеті
+        function createConfetti() {
+            const colors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#45b7d1', '#f7b731'];
+            for (let i = 0; i < 30; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 4 + 's';
+                confetti.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                document.body.appendChild(confetti);
+            }
+        }
+        
+        createConfetti();
+    </script>
+</body>
+</html>
