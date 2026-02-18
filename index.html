@@ -109,7 +109,7 @@
             background: rgba(45, 45, 68, 0.6);
             padding: 30px;
             border-radius: 15px;
-            margin: 40px auto 0;
+            margin: 40px auto 40px;
             max-width: 600px;
             border: 2px solid rgba(255, 215, 0, 0.2);
         }
@@ -272,13 +272,17 @@
             }
             
             .banner-container {
-                position: relative;
-                min-height: 60vh;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                min-height: auto;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                justify-content: center;
+                justify-content: flex-end;
                 padding: 20px;
+                padding-bottom: 30px;
             }
             
             .cta-button {
@@ -305,7 +309,7 @@
                 width: 90%;
                 max-width: 400px;
                 z-index: 10;
-                margin-top: 20px;
+                margin-top: 0;
             }
             
             .mobile-overlay .info-box {
@@ -535,16 +539,6 @@
             successMessage.style.display = 'none';
         }
         
-        // Close modal on Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                const modal = document.getElementById('orderModal');
-                if (modal.style.display === 'block') {
-                    closeModal();
-                }
-            }
-        });
-        
         // Allow Enter key on close button
         document.querySelector('.close').addEventListener('keydown', function(event) {
             if (event.key === 'Enter' || event.key === ' ') {
@@ -552,13 +546,6 @@
                 closeModal();
             }
         });
-        
-        window.onclick = function(event) {
-            const modal = document.getElementById('orderModal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
         
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             const submitButton = this.querySelector('.submit-button');
