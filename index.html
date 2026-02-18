@@ -517,7 +517,7 @@
             // Reset form and messages
             const form = document.getElementById('orderForm');
             const successMessage = document.getElementById('successMessage');
-            if (form && !form.dataset.submitted) {
+            if (form && form.dataset.submitted !== 'true') {
                 form.reset();
             }
             successMessage.style.display = 'none';
@@ -558,16 +558,18 @@
                 return;
             }
             
+            // Mark as submitting before any async operations
             this.dataset.submitting = 'true';
             submitButton.disabled = true;
             submitButton.textContent = 'Відправляється...';
             
             // Форма відправляється на Formspree автоматично
-            // Показуємо повідомлення користувачу
+            // Показуємо повідомлення користувачу після короткої затримки
             setTimeout(() => {
                 successMessage.style.display = 'block';
                 this.dataset.submitted = 'true';
                 
+                // Закриваємо модал та очищуємо стан після показу повідомлення
                 setTimeout(() => {
                     closeModal();
                     this.reset();
