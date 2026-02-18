@@ -32,12 +32,21 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0a0a0a;
+            background: #0a0a0a url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
             min-height: 100vh;
             color: white;
             overflow-x: hidden;
         }
         
+        .logo {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            max-width: 150px;
+            height: auto;
+        }
 
         .hero-section {
             max-width: 1400px;
@@ -51,6 +60,10 @@
             width: 100%;
             max-width: 1400px;
             margin: 0 auto 40px;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .main-image {
@@ -62,7 +75,7 @@
         
         /* Десктопна картинка */
         .banner-desktop {
-            display: block;
+            display: none;
         }
         
         .banner-mobile {
@@ -71,10 +84,7 @@
         
         /* Кнопка для десктопу - жовта */
         .cta-button {
-            position: absolute;
-            bottom: 8%;
-            left: 50%;
-            transform: translateX(-50%);
+            position: relative;
             background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
             color: #1a1a2e;
             border: none;
@@ -90,7 +100,7 @@
         }
         
         .cta-button:hover {
-            transform: translateX(-50%) translateY(-3px);
+            transform: translateY(-3px);
             box-shadow: 0 12px 35px rgba(255, 215, 0, 0.8);
             background: linear-gradient(135deg, #ffed4e 0%, #fffb88 100%);
         }
@@ -247,6 +257,12 @@
         }
         
         @media (max-width: 768px) {
+            .logo {
+                max-width: 100px;
+                top: 15px;
+                left: 15px;
+            }
+            
             .banner-desktop {
                 display: none;
             }
@@ -257,16 +273,11 @@
             
             .banner-container {
                 position: relative;
-                min-height: 100vh;
-                background-image: url('banner2.png');
-                background-size: cover;
-                background-position: top center;
-                background-repeat: no-repeat;
-                background-color: #0a0a0a;
+                min-height: 60vh;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                justify-content: flex-start;
+                justify-content: center;
                 padding: 20px;
             }
             
@@ -274,22 +285,17 @@
                 padding: 15px 40px;
                 font-size: 1.3em;
                 position: relative;
-                bottom: auto;
-                top: auto;
-                left: auto;
-                transform: none;
-                margin-top: 50vh;
                 width: 80%;
                 max-width: 300px;
                 margin-bottom: 20px;
-                background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
-                color: white;
+                background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+                color: #1a1a2e;
             }
             
             .cta-button:hover {
                 transform: translateY(-3px);
-                background: linear-gradient(135deg, #ff2020 0%, #dd0000 100%);
-                box-shadow: 0 12px 35px rgba(255, 0, 0, 0.7);
+                background: linear-gradient(135deg, #ffed4e 0%, #fffb88 100%);
+                box-shadow: 0 12px 35px rgba(255, 215, 0, 0.8);
             }
             
             /* Info-box для мобільних - поверх картинки */
@@ -337,6 +343,12 @@
         }
         
         @media (max-width: 480px) {
+            .logo {
+                max-width: 80px;
+                top: 10px;
+                left: 10px;
+            }
+            
             .cta-button {
                 padding: 12px 30px;
                 font-size: 1.1em;
@@ -368,12 +380,12 @@
     </style>
 </head>
 <body>
+    <!-- Logo in upper left corner -->
+    <img src="logo.png" alt="Greetify - Пісні-привітання на замовлення" class="logo">
+    
     <div class="hero-section">
         <!-- Банер з кнопкою -->
         <div class="banner-container">
-            <img src="banner.png" alt="Greetify - Коли слова не можуть передати почуття їх співають" class="main-image banner-desktop">
-            <img src="banner2.png" alt="Greetify - Коли слова не можуть передати почуття їх співають" class="main-image banner-mobile">
-            
             <!-- Кнопка замовлення поверх банера -->
             <button class="cta-button" onclick="openModal()">Замовити пісню</button>
             
